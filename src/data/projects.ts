@@ -9,6 +9,8 @@ export type Project = {
   category: Category;
   description: string;
   stack: string[];
+  /** Live deployment. Omitted where the build is not publicly reachable. */
+  url?: string;
 };
 
 /**
@@ -67,6 +69,17 @@ export const projects: Project[] = [
     description:
       'Runs every week once new court decisions land. Pulls case data across four departments, then agents build arguments, consolidate them and assemble a finished newsletter served over an API. Built end to end by me.',
     stack: ['Python', 'FastAPI', 'Agents', 'Scheduling'],
+    url: 'https://appealmate.com/',
+  },
+  {
+    slug: 'appellate-argument-engine',
+    title: 'Appellate Argument Engine',
+    kicker: 'Legal',
+    category: 'client',
+    description:
+      'Reads the record on appeal alongside the appellant and respondent briefs and the reply brief. One agent builds the supporting and counter arguments, a second consolidates them into a single line of reasoning, and a third drafts the questions a judge would put to each side.',
+    stack: ['Python', 'Multi-agent LLM', 'Long-context RAG', 'PDF'],
+    url: 'https://appellateshark.com/',
   },
   {
     slug: 'patient-records-summarizer',
@@ -76,6 +89,7 @@ export const projects: Project[] = [
     description:
       'Users upload very large patient record PDFs; multiple agents condense them into short, organized summaries doctors and patients can actually read. I built a backend module of the pipeline.',
     stack: ['OpenAI', 'Gemini', 'Python', 'PDF'],
+    url: 'https://acrodocz.com/',
   },
   {
     slug: 'badminton-club-platform',
@@ -85,6 +99,7 @@ export const projects: Project[] = [
     description:
       'Court assignment, live rankings and player statistics for clubs in Canada, with full authentication, AI-based player evaluation and an AI coach that guides players on what to work on next.',
     stack: ['Python', 'Auth', 'AI evaluation', 'Coaching agent'],
+    url: 'https://smashlytics.net/',
   },
   {
     slug: 'commerce-platform-live-ops',
@@ -147,6 +162,7 @@ export const projects: Project[] = [
     description:
       'Local wholesalers were losing track of inventory and order bookers. I built the full management system plus a Flutter app so order bookers can work from the field.',
     stack: ['Flutter', 'Python', 'PostgreSQL'],
+    url: 'https://wholesale.agenticstacksystem.com/',
   },
   {
     slug: 'lead-generation-engine',
@@ -156,6 +172,7 @@ export const projects: Project[] = [
     description:
       'Scrapes and organizes leads, checks whether each business is real and active, then feeds automated outreach.',
     stack: ['Scraping', 'Validation', 'Email automation'],
+    url: 'https://freelanceagent.agenticstacksystem.com/',
   },
   {
     slug: 'seo-ecommerce-store',
@@ -165,6 +182,7 @@ export const projects: Project[] = [
     description:
       'A storefront built for search visibility from the ground up rather than patched on afterwards.',
     stack: ['Next.js', 'Python', 'PostgreSQL'],
+    url: 'https://shopiease.com/',
   },
   {
     slug: 'rj-assistant',

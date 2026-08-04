@@ -2,7 +2,7 @@
  * Single source of truth for identity, contact details and SEO.
  *
  * ─────────────────────────────────────────────────────────────
- *  TODO: replace the four values marked `REPLACE ME` below.
+ *  TODO: replace the values marked `REPLACE ME` below.
  *  Everything else on the site (nav, contact buttons, footer,
  *  <title>, canonical URLs, Open Graph tags, Twitter cards,
  *  JSON-LD structured data, sitemap.xml and robots.txt) is
@@ -17,17 +17,21 @@ export const site = {
   role: 'AI Engineer',
   jobTitle: 'AI Engineer',
 
-  /** REPLACE ME: production origin, no trailing slash. Used for canonical URLs, OG tags and the sitemap. */
-  url: 'https://hammadurrehman.com',
+  /** Production origin, no trailing slash. Used for canonical URLs, OG tags and the sitemap. */
+  url: 'https://hammadurrehman.site',
 
   /** REPLACE ME: the address the "Get in touch" button opens. */
   email: 'your.email@example.com',
 
-  /** REPLACE ME: full LinkedIn profile URL. */
-  linkedin: 'https://www.linkedin.com/in/YOUR-HANDLE',
+  /** Display form of the phone number; `phoneHref` is the E.164 form for tel: links. */
+  phone: '+92 306 9822189',
+  phoneHref: '+923069822189',
 
-  /** REPLACE ME: full GitHub profile URL. */
-  github: 'https://github.com/YOUR-HANDLE',
+  /** Full LinkedIn profile URL. */
+  linkedin: 'https://www.linkedin.com/in/hammad-ur-rehman-ai',
+
+  /** Full GitHub profile URL. */
+  github: 'https://github.com/HammadUrRehman98',
 
   /** Drop the PDF in /public with this exact filename to enable the download button. */
   resume: '/Hammad_Ur_Rehman_Resume.pdf',
@@ -85,7 +89,4 @@ export const navLinks = [
 ] as const;
 
 /** True while a REPLACE ME value is still in place, used to warn in the dev console. */
-export const hasPlaceholders =
-  site.email.includes('example.com') ||
-  site.linkedin.includes('YOUR-HANDLE') ||
-  site.github.includes('YOUR-HANDLE');
+export const hasPlaceholders = site.email.includes('example.com');

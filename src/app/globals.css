@@ -365,6 +365,10 @@ section + section{border-top:1px solid var(--rule)}
   font-size:12px;letter-spacing:.045em;color:var(--muted);
 }
 .entry-stack span + span::before{content:' · ';color:var(--rule)}
+/* the title inherits the heading treatment; only the hover colour is the link's */
+.entry-title a{color:inherit;text-decoration:none}
+.entry-live{margin:8px 0 0;font-size:12.5px}
+.entry-live .tlink{font-size:inherit;letter-spacing:.02em}
 
 /* ---------- toolkit ---------- */
 .toolkit{
@@ -435,6 +439,15 @@ section + section{border-top:1px solid var(--rule)}
   letter-spacing:-.01em;
 }
 .contact-email:hover{color:var(--accent);border-bottom-color:var(--accent)}
+
+/* a step down from the email: still a headline, not a body line */
+.contact-phone{
+  font-family:var(--display);font-size:clamp(19px,1.9vw,24px);
+  text-decoration:none;border-bottom:1px solid var(--rule);
+  padding-bottom:2px;transition:border-color .2s,color .2s;
+  display:inline-block;letter-spacing:-.01em;font-variant-numeric:tabular-nums;
+}
+.contact-phone:hover{color:var(--accent);border-bottom-color:var(--accent)}
 
 .elsewhere{display:flex;flex-wrap:wrap;gap:22px}
 

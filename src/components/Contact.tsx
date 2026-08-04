@@ -31,6 +31,11 @@ export function Contact() {
               {site.email}
             </a>
 
+            <p className="meta">Phone</p>
+            <a className="contact-phone" href={`tel:${site.phoneHref}`}>
+              {site.phone}
+            </a>
+
             <p className="meta">Elsewhere</p>
             <div className="elsewhere">
               <a

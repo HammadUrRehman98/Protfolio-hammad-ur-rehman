@@ -15,9 +15,7 @@ export function JsonLd() {
   const personId = `${site.url}/#person`;
   const siteId = `${site.url}/#website`;
 
-  const sameAs = [site.linkedin, site.github].filter(
-    (url) => !url.includes('YOUR-HANDLE'),
-  );
+  const sameAs = [site.linkedin, site.github];
 
   const graph = [
     {
@@ -38,6 +36,7 @@ export function JsonLd() {
       },
       ...(sameAs.length ? { sameAs } : {}),
       ...(site.email.includes('example.com') ? {} : { email: `mailto:${site.email}` }),
+      telephone: site.phoneHref,
       address: {
         '@type': 'PostalAddress',
         addressLocality: site.location.city,
@@ -87,6 +86,7 @@ export function JsonLd() {
           '@id': `${site.url}/#${project.slug}`,
           name: project.title,
           description: project.description,
+          ...(project.url ? { url: project.url } : {}),
           creator: { '@id': personId },
           keywords: project.stack.join(', '),
         },

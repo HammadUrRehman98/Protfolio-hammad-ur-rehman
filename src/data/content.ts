@@ -1,6 +1,6 @@
 export const figures = [
   { value: '1', suffix: '+', label: 'Year shipping production AI' },
-  { value: '14', suffix: '+', label: 'Systems built and delivered' },
+  { value: '15', suffix: '+', label: 'Systems built and delivered' },
   { value: '26', suffix: 'th', label: 'Global, Agentic Legal RAG Challenge' },
   { value: '4', suffix: '', label: 'Domains worked in' },
 ];

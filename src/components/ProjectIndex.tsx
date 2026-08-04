@@ -1,5 +1,10 @@
 import { projectGroups, projects } from '@/data/projects';
 
+/** `https://wholesale.agenticstacksystem.com/` → `wholesale.agenticstacksystem.com` */
+function host(url: string) {
+  return new URL(url).host.replace(/^www\./, '');
+}
+
 /**
  * The rest of the work, grouped into blocks instead of filtered.
  *
@@ -25,13 +30,35 @@ export function ProjectIndex() {
               {inGroup.map((project) => (
                 <article className="entry" key={project.slug}>
                   <p className="entry-tag">{project.kicker}</p>
-                  <h3 className="entry-title">{project.title}</h3>
+                  <h3 className="entry-title">
+                    {/* the card already highlights on hover, so a live build
+                        gets the title itself as the target */}
+                    {project.url ? (
+                      <a href={project.url} target="_blank" rel="noopener noreferrer">
+                        {project.title}
+                      </a>
+                    ) : (
+                      project.title
+                    )}
+                  </h3>
                   <p className="entry-desc">{project.description}</p>
                   <p className="entry-stack">
                     {project.stack.map((tech) => (
                       <span key={tech}>{tech}</span>
                     ))}
                   </p>
+                  {project.url && (
+                    <p className="entry-live">
+                      <a
+                        className="tlink tlink-muted"
+                        href={project.url}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                      >
+                        {host(project.url)} <span aria-hidden="true">↗</span>
+                      </a>
+                    </p>
+                  )}
                 </article>
               ))}
             </div>
