@@ -6,7 +6,7 @@ export function Contact() {
     <section id="contact" className="contact" aria-labelledby="contact-heading">
       <div className="wrap">
         <p className="dept">
-          <span className="dept-no">05</span>
+          <span className="dept-no">04</span>
           <span className="dept-name" id="contact-heading">
             Contact
           </span>
