@@ -71,6 +71,8 @@ ${history}
 
 ## Frequently asked questions
 
+Also published at ${site.url}/faq/
+
 ${questions}
 
 ---

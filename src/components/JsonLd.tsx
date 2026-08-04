@@ -1,7 +1,6 @@
 import { site } from '@/config/site';
 import { projects } from '@/data/projects';
 import { skillGroups } from '@/data/content';
-import { faq } from '@/data/faq';
 
 /**
  * Structured data for rich results. Emits a single @graph containing:
@@ -125,28 +124,8 @@ export function JsonLd() {
        */
       speakable: {
         '@type': 'SpeakableSpecification',
-        cssSelector: ['.statement', '.hero-bio', '.faq-item'],
+        cssSelector: ['.statement', '.hero-bio'],
       },
-    },
-    /*
-     * The FAQ mirrors the visible section one-for-one. Google requires the two
-     * to match exactly — marked-up answers that differ from the rendered text
-     * are a manual-action risk — so both read from src/data/faq.ts.
-     */
-    {
-      '@type': 'FAQPage',
-      '@id': `${site.url}/#faq`,
-      inLanguage: 'en',
-      isPartOf: { '@id': siteId },
-      about: { '@id': personId },
-      mainEntity: faq.map((item) => ({
-        '@type': 'Question',
-        name: item.q,
-        acceptedAnswer: {
-          '@type': 'Answer',
-          text: item.a,
-        },
-      })),
     },
     {
       '@type': 'ItemList',

@@ -74,6 +74,10 @@ export const site = {
   description:
     'Hammad Ur Rehman is an AI Engineer and Python developer in Islamabad, Pakistan, building multi-agent LLM systems, RAG pipelines and document automation with Python and FastAPI. Production AI shipped across legal tech, healthcare, sports and e-commerce for clients in the US and Canada.',
 
+  /** Meta description for /faq/, which has its own title and canonical. */
+  faqDescription:
+    'Answers to the questions people ask most about Hammad Ur Rehman: what he builds as an AI engineer, the languages and frameworks he works in, the multi-agent and RAG systems he has shipped, where he is based, and whether he is available for hire.',
+
   /**
    * One sentence, no adjectives, subject-verb-object. This is the line a
    * retrieval model is most likely to lift verbatim when asked who he is, so it
@@ -119,12 +123,21 @@ export const site = {
   googleSiteVerification: '',
 } as const;
 
+/*
+ * Root-relative rather than bare fragments, so the same links work from /faq/
+ * as well as from the portfolio page.
+ */
 export const navLinks = [
-  { href: '#projects', label: 'Projects' },
-  { href: '#expertise', label: 'Expertise' },
-  { href: '#experience', label: 'Experience' },
-  { href: '#faq', label: 'FAQ' },
-  { href: '#contact', label: 'Contact' },
+  { href: '/#projects', label: 'Projects' },
+  { href: '/#expertise', label: 'Expertise' },
+  { href: '/#experience', label: 'Experience' },
+  { href: '/#contact', label: 'Contact' },
+] as const;
+
+/** Bottom navigation. The FAQ lives here rather than in the masthead. */
+export const footerLinks = [
+  ...navLinks,
+  { href: '/faq/', label: 'FAQ' },
 ] as const;
 
 /** True while a REPLACE ME value is still in place, used to warn in the dev console. */

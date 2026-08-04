@@ -1,7 +1,6 @@
 import type { Metadata, Viewport } from 'next';
 import { Instrument_Serif, Newsreader } from 'next/font/google';
 import { site } from '@/config/site';
-import { JsonLd } from '@/components/JsonLd';
 import './globals.css';
 
 /*
@@ -110,7 +109,6 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
   return (
     <html lang="en" className={`${display.variable} ${body.variable}`}>
       <body>
-        <JsonLd />
         <a className="skip" href="#main">
           Skip to content
         </a>

@@ -16,5 +16,11 @@ export default function sitemap(): MetadataRoute.Sitemap {
       // name query for a person very often surfaces a face before a page.
       images: [`${site.url}${site.portrait}`, `${site.url}/opengraph-image`],
     },
+    {
+      url: `${site.url}/faq/`,
+      lastModified: new Date(),
+      changeFrequency: 'monthly',
+      priority: 0.7,
+    },
   ];
 }
