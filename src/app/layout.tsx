@@ -33,7 +33,7 @@ const body = Newsreader({
   display: 'swap',
 });
 
-const title = `${site.name} · ${site.role}`;
+const title = site.seoTitle;
 
 export const metadata: Metadata = {
   metadataBase: new URL(site.url),
@@ -84,6 +84,19 @@ export const metadata: Metadata = {
     ? { verification: { google: site.googleSiteVerification } }
     : {}),
   formatDetection: { email: false, address: false, telephone: false },
+  other: {
+    /*
+     * Dublin Core and the geo pair are read by a long tail of crawlers,
+     * aggregators and academic indexers that never learned Open Graph. They
+     * cost four lines and cover surfaces schema.org alone does not reach.
+     */
+    'dc.title': title,
+    'dc.creator': site.name,
+    'dc.description': site.description,
+    'dc.language': 'en',
+    'geo.region': `${site.location.countryCode}-IS`,
+    'geo.placename': site.location.city,
+  },
 };
 
 export const viewport: Viewport = {

@@ -1,6 +1,7 @@
 import { site } from '@/config/site';
 import { projects } from '@/data/projects';
 import { skillGroups } from '@/data/content';
+import { faq } from '@/data/faq';
 
 /**
  * Structured data for rich results. Emits a single @graph containing:
@@ -15,6 +16,10 @@ export function JsonLd() {
   const personId = `${site.url}/#person`;
   const siteId = `${site.url}/#website`;
 
+  // Evaluated once per build. The site is statically exported, so "when this
+  // page was last built" is exactly what `dateModified` should report.
+  const buildDate = new Date().toISOString();
+
   const sameAs = [site.linkedin, site.github];
 
   const graph = [
@@ -22,14 +27,20 @@ export function JsonLd() {
       '@type': 'Person',
       '@id': personId,
       name: site.name,
+      alternateName: [...site.alternateNames].filter((n) => n !== site.name),
       givenName: site.firstName,
       familyName: site.lastName,
-      jobTitle: site.jobTitle,
-      description: site.description,
+      // Both titles, so the entity matches "AI engineer" and "Python developer"
+      jobTitle: [site.jobTitle, site.secondaryRole],
+      description: site.entitySentence,
+      disambiguatingDescription: site.description,
+      award: site.award,
       url: site.url,
       image: {
         '@type': 'ImageObject',
+        '@id': `${site.url}/#portrait`,
         url: `${site.url}${site.portrait}`,
+        contentUrl: `${site.url}${site.portrait}`,
         width: 1120,
         height: 1120,
         caption: `${site.name}, ${site.role}`,
@@ -46,13 +57,45 @@ export function JsonLd() {
       worksFor: {
         '@type': 'Organization',
         name: site.employer.name,
+        url: site.employer.url,
       },
       alumniOf: {
         '@type': 'EducationalOrganization',
         name: site.alumniOf,
       },
+      /*
+       * `hasOccupation` is what lets a search engine answer "what does this
+       * person do" with a category rather than a job title string. The ONET
+       * code is the standard identifier for software developers, which is how
+       * the role gets tied to an established taxonomy instead of free text.
+       */
+      hasOccupation: [
+        {
+          '@type': 'Occupation',
+          name: site.jobTitle,
+          occupationalCategory: '15-1252.00',
+          skills: skillGroups.flatMap((group) => group.items).join(', '),
+          occupationLocation: {
+            '@type': 'City',
+            name: site.location.city,
+          },
+        },
+        {
+          '@type': 'Occupation',
+          name: site.secondaryRole,
+          occupationalCategory: '15-1252.00',
+          skills: 'Python, FastAPI, PostgreSQL, REST APIs, OCR, PDF automation, web scraping',
+        },
+      ],
+      homeLocation: {
+        '@type': 'City',
+        name: `${site.location.city}, ${site.location.country}`,
+      },
       knowsAbout: skillGroups.flatMap((group) => group.items),
-      knowsLanguage: ['en'],
+      // English only: it is the one language the résumé evidences. Nationality
+      // is deliberately absent too — the city is a fact, citizenship is not.
+      knowsLanguage: [{ '@type': 'Language', name: 'English', alternateName: 'en' }],
+      mainEntityOfPage: { '@id': `${site.url}/#profilepage` },
     },
     {
       '@type': 'WebSite',
@@ -67,11 +110,43 @@ export function JsonLd() {
       '@type': 'ProfilePage',
       '@id': `${site.url}/#profilepage`,
       url: site.url,
-      name: `${site.name} · ${site.role}`,
+      name: site.seoTitle,
+      description: site.description,
       isPartOf: { '@id': siteId },
       about: { '@id': personId },
       mainEntity: { '@id': personId },
       inLanguage: 'en',
+      dateModified: buildDate,
+      primaryImageOfPage: { '@id': `${site.url}/#portrait` },
+      /*
+       * Names the elements worth reading aloud or lifting as an answer. Voice
+       * results and answer engines use it to pick the passage; without it they
+       * fall back to whatever text happens to come first in the document.
+       */
+      speakable: {
+        '@type': 'SpeakableSpecification',
+        cssSelector: ['.statement', '.hero-bio', '.faq-item'],
+      },
+    },
+    /*
+     * The FAQ mirrors the visible section one-for-one. Google requires the two
+     * to match exactly — marked-up answers that differ from the rendered text
+     * are a manual-action risk — so both read from src/data/faq.ts.
+     */
+    {
+      '@type': 'FAQPage',
+      '@id': `${site.url}/#faq`,
+      inLanguage: 'en',
+      isPartOf: { '@id': siteId },
+      about: { '@id': personId },
+      mainEntity: faq.map((item) => ({
+        '@type': 'Question',
+        name: item.q,
+        acceptedAnswer: {
+          '@type': 'Answer',
+          text: item.a,
+        },
+      })),
     },
     {
       '@type': 'ItemList',

@@ -388,6 +388,21 @@ section + section{border-top:1px solid var(--rule)}
 .toolkit-row dd{margin:0;font-size:17px;color:var(--ink);line-height:1.5}
 .toolkit-row dd span + span::before{content:' · ';color:var(--rule)}
 
+/* ---------- questions ---------- */
+/* one column, not two: the answers are full paragraphs, and a two-up grid
+   would set them at a measure too short to read comfortably */
+.faq{margin:0;border-top:1px solid var(--ink)}
+.faq-item{padding:16px 0 18px;border-bottom:1px solid var(--rule)}
+.faq-item dt{
+  font-family:var(--display);font-weight:400;
+  font-size:clamp(19px,1.9vw,23px);line-height:1.2;letter-spacing:-.012em;
+  color:var(--ink);
+}
+.faq-item dd{
+  margin:7px 0 0;max-width:74ch;
+  color:var(--ink-2);font-size:16px;line-height:1.6;
+}
+
 /* ---------- background ---------- */
 .two-col{display:grid;grid-template-columns:1.25fr .75fr;gap:clamp(34px,6vw,80px)}
 

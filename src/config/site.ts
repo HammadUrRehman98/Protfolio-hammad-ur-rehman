@@ -54,24 +54,62 @@ export const site = {
 
   alumniOf: 'BS Computer Science',
 
+  /** Spellings people actually type. Feeds the JSON-LD `alternateName` array. */
+  alternateNames: ['Hammad Ur Rehman', 'Hammad-ur-Rehman', 'Hammad Rehman', 'Hammad UR Rehman'],
+
+  /** Second job title, so "Python developer" queries have an entity to match. */
+  secondaryRole: 'Python Developer',
+
+  /** Cited by name in the JSON-LD `award` field and the FAQ. */
+  award: 'Ranked 26th globally in the opening stage of the Agentic Legal RAG Challenge',
+
   tagline: 'I build multi-agent systems that turn thousands of raw documents into finished work.',
 
+  /**
+   * The <title>. Name first because name queries are the ones actually winnable;
+   * the two role terms follow so the SERP line reads as a description as well.
+   */
+  seoTitle: 'Hammad Ur Rehman — AI Engineer & Python Developer',
+
   description:
-    'AI Engineer in Islamabad building multi-agent systems and automation pipelines that turn thousands of raw documents into finished work. Production AI across legal, healthcare, sports and commerce.',
+    'Hammad Ur Rehman is an AI Engineer and Python developer in Islamabad, Pakistan, building multi-agent LLM systems, RAG pipelines and document automation with Python and FastAPI. Production AI shipped across legal tech, healthcare, sports and e-commerce for clients in the US and Canada.',
+
+  /**
+   * One sentence, no adjectives, subject-verb-object. This is the line a
+   * retrieval model is most likely to lift verbatim when asked who he is, so it
+   * carries the name, both roles and the location in a single quotable unit.
+   */
+  entitySentence:
+    'Hammad Ur Rehman is an AI Engineer and Python developer based in Islamabad, Pakistan, who builds multi-agent LLM systems and document automation pipelines at AIVSTUDIOS.',
 
   /** Feeds <meta name="keywords"> and the JSON-LD knowsAbout array. */
   keywords: [
+    'Hammad Ur Rehman',
     'AI Engineer',
+    'Python Developer',
+    'Machine Learning Engineer',
+    'LLM Engineer',
+    'Generative AI Engineer',
     'Multi-agent systems',
+    'Agentic AI',
     'LLM pipelines',
     'RAG',
     'Document automation',
+    'AI automation',
     'Python',
     'FastAPI',
+    'Next.js',
     'Machine learning',
+    'Deep learning',
     'Computer vision',
     'NLP',
+    'OCR',
+    'PDF automation',
     'Legal tech',
+    'AI Engineer Islamabad',
+    'AI Engineer Pakistan',
+    'Python developer Pakistan',
+    'Hire AI engineer',
     'Islamabad',
     'Pakistan',
   ],
@@ -85,6 +123,7 @@ export const navLinks = [
   { href: '#projects', label: 'Projects' },
   { href: '#expertise', label: 'Expertise' },
   { href: '#experience', label: 'Experience' },
+  { href: '#faq', label: 'FAQ' },
   { href: '#contact', label: 'Contact' },
 ] as const;
 

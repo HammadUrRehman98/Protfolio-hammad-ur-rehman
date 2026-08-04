@@ -12,6 +12,14 @@
   Content-Type: image/png
   Cache-Control: public, max-age=86400
 
+# The Response headers set in app/llms.txt/route.ts are discarded when the
+# route is flattened into a static file, so the caching policy lives here.
+# Short max-age: this is the copy answer engines re-fetch to stay current.
+/llms.txt
+  Content-Type: text/plain; charset=utf-8
+  Cache-Control: public, max-age=3600, must-revalidate
+  X-Robots-Tag: all
+
 # No Content-Disposition here on purpose: opening the URL directly renders in
 # the browser's PDF viewer, while the `download` attribute on the résumé link
 # still saves the file. Short max-age so a replaced résumé goes live same day.

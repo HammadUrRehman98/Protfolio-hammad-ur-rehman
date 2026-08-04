@@ -1,4 +1,5 @@
 import { Contact } from '@/components/Contact';
+import { Faq } from '@/components/Faq';
 import { Footer } from '@/components/Footer';
 import { Hero } from '@/components/Hero';
 import { Nav } from '@/components/Nav';
@@ -15,6 +16,7 @@ export default function Home() {
         <Work />
         <TechStack />
         <Path />
+        <Faq />
         <Contact />
       </main>
       <Footer />
