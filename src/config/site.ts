@@ -2,8 +2,7 @@
  * Single source of truth for identity, contact details and SEO.
  *
  * ─────────────────────────────────────────────────────────────
- *  TODO: replace the values marked `REPLACE ME` below.
- *  Everything else on the site (nav, contact buttons, footer,
+ *  Everything on the site (nav, contact buttons, footer,
  *  <title>, canonical URLs, Open Graph tags, Twitter cards,
  *  JSON-LD structured data, sitemap.xml and robots.txt) is
  *  generated from this file. You do not need to edit anything else.
@@ -20,8 +19,8 @@ export const site = {
   /** Production origin, no trailing slash. Used for canonical URLs, OG tags and the sitemap. */
   url: 'https://hammadurrehman.site',
 
-  /** REPLACE ME: the address the "Get in touch" button opens. */
-  email: 'your.email@example.com',
+  /** The address every "Get in touch" link on the site opens. */
+  email: 'hammad@hammadurrehman.site',
 
   /** Display form of the phone number; `phoneHref` is the E.164 form for tel: links. */
   phone: '+92 306 9822189',
@@ -139,6 +138,3 @@ export const footerLinks = [
   ...navLinks,
   { href: '/faq/', label: 'FAQ' },
 ] as const;
-
-/** True while a REPLACE ME value is still in place, used to warn in the dev console. */
-export const hasPlaceholders = site.email.includes('example.com');

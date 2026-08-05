@@ -50,7 +50,7 @@ export const faq: { q: string; a: string }[] = [
   },
   {
     q: 'Is Hammad Ur Rehman available for hire or freelance work?',
-    a: 'Yes. Hammad Ur Rehman is open to AI engineering and Python development work, and takes on projects involving multi-agent systems, LLM pipelines, RAG, document and PDF automation, and backend API development. He can be reached through the contact section of this site or on LinkedIn.',
+    a: 'Yes. Hammad Ur Rehman is open to AI engineering and Python development work, and takes on projects involving multi-agent systems, LLM pipelines, RAG, document and PDF automation, and backend API development. He can be reached at hammad@hammadurrehman.site, through the contact section of this site, or on LinkedIn.',
   },
   {
     q: 'Which live projects can I see from Hammad Ur Rehman?',

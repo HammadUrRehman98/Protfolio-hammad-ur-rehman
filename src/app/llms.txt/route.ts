@@ -48,6 +48,7 @@ ${site.description}
 - **Education:** ${site.alumniOf}
 - **Recognition:** ${site.award}
 - **Website:** ${site.url}
+- **Email:** ${site.email}
 - **LinkedIn:** ${site.linkedin}
 - **GitHub:** ${site.github}
 - **Résumé (PDF):** ${site.url}${site.resume}

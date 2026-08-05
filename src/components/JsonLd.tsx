@@ -45,7 +45,7 @@ export function JsonLd() {
         caption: `${site.name}, ${site.role}`,
       },
       ...(sameAs.length ? { sameAs } : {}),
-      ...(site.email.includes('example.com') ? {} : { email: `mailto:${site.email}` }),
+      email: `mailto:${site.email}`,
       telephone: site.phoneHref,
       address: {
         '@type': 'PostalAddress',
