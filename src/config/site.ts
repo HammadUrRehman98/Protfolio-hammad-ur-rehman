@@ -69,7 +69,7 @@ export const site = {
    * The <title>. Name first because name queries are the ones actually winnable;
    * the two role terms follow so the SERP line reads as a description as well.
    */
-  seoTitle: 'Hammad Ur Rehman — AI Engineer & Python Developer',
+  seoTitle: 'Hammad Ur Rehman . AI Engineer & Python Developer',
 
   description:
     'Hammad Ur Rehman is an AI Engineer and Python developer in Islamabad, Pakistan, building multi-agent LLM systems, RAG pipelines and document automation with Python and FastAPI. Production AI shipped across legal tech, healthcare, sports and e-commerce for clients in the US and Canada.',
