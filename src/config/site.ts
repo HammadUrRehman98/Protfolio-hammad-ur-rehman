@@ -33,11 +33,10 @@ export const site = {
   github: 'https://github.com/HammadUrRehman98',
 
   /*
-   * The PDF in /public. The URL stays space-free and stable so old links and
-   * the /_headers rule keep working; `resumeFilename` is the friendlier name
-   * the browser saves it under.
+   * The PDF in /public. Named for what it is, with no spaces so the URL needs
+   * no escaping; the previous filename 301s to it from public/_redirects.
    */
-  resume: '/Hammad_Ur_Rehman_Resume.pdf',
+  resume: '/Hammad-Ur-Rehman-AI-Engineer.pdf',
   resumeFilename: 'Hammad Ur Rehman - AI Engineer.pdf',
 
   /** Portrait in /public. The 560px variant is the srcset small; the 1120 is the full plate. */

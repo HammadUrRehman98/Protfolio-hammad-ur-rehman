@@ -1,0 +1,3 @@
+# Cloudflare Pages redirects. Next copies /public verbatim into /out.
+# The résumé was published under its old filename; keep that URL working.
+/Hammad_Ur_Rehman_Resume.pdf  /Hammad-Ur-Rehman-AI-Engineer.pdf  301

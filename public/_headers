@@ -23,7 +23,7 @@
 # No Content-Disposition here on purpose: opening the URL directly renders in
 # the browser's PDF viewer, while the `download` attribute on the résumé link
 # still saves the file. Short max-age so a replaced résumé goes live same day.
-/Hammad_Ur_Rehman_Resume.pdf
+/Hammad-Ur-Rehman-AI-Engineer.pdf
   Content-Type: application/pdf
   Cache-Control: public, max-age=3600, must-revalidate
 
