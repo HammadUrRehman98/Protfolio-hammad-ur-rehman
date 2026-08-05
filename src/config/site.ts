@@ -32,8 +32,13 @@ export const site = {
   /** Full GitHub profile URL. */
   github: 'https://github.com/HammadUrRehman98',
 
-  /** Drop the PDF in /public with this exact filename to enable the download button. */
+  /*
+   * The PDF in /public. The URL stays space-free and stable so old links and
+   * the /_headers rule keep working; `resumeFilename` is the friendlier name
+   * the browser saves it under.
+   */
   resume: '/Hammad_Ur_Rehman_Resume.pdf',
+  resumeFilename: 'Hammad Ur Rehman - AI Engineer.pdf',
 
   /** Portrait in /public. The 560px variant is the srcset small; the 1120 is the full plate. */
   portrait: '/hammad-ur-rehman-1120.jpg',

@@ -54,7 +54,7 @@ export function Contact() {
               >
                 GitHub <span aria-hidden="true">↗</span>
               </a>
-              <a className="tlink tlink-muted" href={site.resume} download>
+              <a className="tlink tlink-muted" href={site.resume} download={site.resumeFilename}>
                 Résumé <span aria-hidden="true">↓</span>
               </a>
             </div>
