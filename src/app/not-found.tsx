@@ -23,7 +23,7 @@ export default function NotFound() {
             </h1>
             <p>The link is broken, or the page has moved.</p>
             <a className="tlink" href="/">
-              Back to the portfolio <span aria-hidden="true">→</span>
+              Back to the portfolio
             </a>
           </div>
         </section>

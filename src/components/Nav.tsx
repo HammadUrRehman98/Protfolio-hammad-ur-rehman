@@ -9,7 +9,7 @@ export function Nav() {
   return (
     <header className="masthead">
       <div className="wrap masthead-in">
-        <a className="masthead-name" href="#top">
+        <a className="masthead-name" href="/#top">
           {site.name}
         </a>
 

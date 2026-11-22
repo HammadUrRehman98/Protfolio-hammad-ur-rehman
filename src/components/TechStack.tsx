@@ -1,6 +1,12 @@
 import { skillGroups } from '@/data/content';
 import { Reveal } from './Reveal';
 
+/*
+ * TODO: add once real project exists — LangChain, LangGraph, LlamaIndex, CrewAI,
+ * MCP (Model Context Protocol), Kubernetes, LLM evaluation/observability
+ * platforms, fine-tuning. Only list a tool here after it ships in a project.
+ */
+
 export function TechStack() {
   return (
     <section id="expertise" aria-labelledby="stack-heading">
@@ -18,7 +24,7 @@ export function TechStack() {
             What I <em>reach for</em>.
           </Reveal>
           <Reveal as="p" className="lede">
-            Chosen for what ships and stays running, not for what&rsquo;s new this month.
+            The stack behind every production AI system above, from LLM agents and RAG to Docker and the cloud. Chosen for what ships and stays running.
           </Reveal>
         </div>
 

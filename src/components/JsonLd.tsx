@@ -1,5 +1,5 @@
 import { site } from '@/config/site';
-import { projects } from '@/data/projects';
+import { caseStudy, featured, projects } from '@/data/projects';
 import { skillGroups } from '@/data/content';
 
 /**
@@ -7,7 +7,8 @@ import { skillGroups } from '@/data/content';
  *   Person       the knowledge-panel entity (name, role, employer, skills, profiles)
  *   WebSite      site-level entity
  *   ProfilePage  declares this page as the Person's profile, its mainEntity
- *   ItemList     the project list, so each build is individually addressable
+ *   ItemList     the project list, so each build is individually addressable;
+ *                live products are SoftwareApplication, the rest CreativeWork
  *
  * Validate at https://search.google.com/test/rich-results after deploying.
  */
@@ -29,8 +30,7 @@ export function JsonLd() {
       alternateName: [...site.alternateNames].filter((n) => n !== site.name),
       givenName: site.firstName,
       familyName: site.lastName,
-      // Both titles, so the entity matches "AI engineer" and "Python developer"
-      jobTitle: [site.jobTitle, site.secondaryRole],
+      jobTitle: site.jobTitle,
       description: site.entitySentence,
       disambiguatingDescription: site.description,
       award: site.award,
@@ -59,8 +59,8 @@ export function JsonLd() {
         url: site.employer.url,
       },
       alumniOf: {
-        '@type': 'EducationalOrganization',
-        name: site.alumniOf,
+        '@type': 'CollegeOrUniversity',
+        name: site.education.school,
       },
       /*
        * `hasOccupation` is what lets a search engine answer "what does this
@@ -79,18 +79,12 @@ export function JsonLd() {
             name: site.location.city,
           },
         },
-        {
-          '@type': 'Occupation',
-          name: site.secondaryRole,
-          occupationalCategory: '15-1252.00',
-          skills: 'Python, FastAPI, PostgreSQL, REST APIs, OCR, PDF automation, web scraping',
-        },
       ],
       homeLocation: {
         '@type': 'City',
         name: `${site.location.city}, ${site.location.country}`,
       },
-      knowsAbout: skillGroups.flatMap((group) => group.items),
+      knowsAbout: [...site.knowsAbout],
       // English only: it is the one language the résumé evidences. Nationality
       // is deliberately absent too — the city is a fact, citizenship is not.
       knowsLanguage: [{ '@type': 'Language', name: 'English', alternateName: 'en' }],
@@ -131,20 +125,46 @@ export function JsonLd() {
       '@type': 'ItemList',
       '@id': `${site.url}/#projects`,
       name: 'Selected work',
-      numberOfItems: projects.length,
-      itemListElement: projects.map((project, index) => ({
-        '@type': 'ListItem',
-        position: index + 1,
-        item: {
-          '@type': 'CreativeWork',
-          '@id': `${site.url}/#${project.slug}`,
-          name: project.title,
-          description: project.description,
-          ...(project.url ? { url: project.url } : {}),
-          creator: { '@id': personId },
-          keywords: project.stack.join(', '),
+      numberOfItems: projects.length + 1,
+      itemListElement: [
+        {
+          '@type': 'ListItem',
+          position: 1,
+          item: {
+            '@type': 'CreativeWork',
+            '@id': `${site.url}${featured.href}#work`,
+            name: caseStudy.shortTitle,
+            description: caseStudy.description,
+            url: `${site.url}${featured.href}`,
+            creator: { '@id': personId },
+            keywords: caseStudy.stack.join(', '),
+          },
         },
-      })),
+        ...projects.map((project, index) => ({
+          '@type': 'ListItem',
+          position: index + 2,
+          item: project.url
+            ? {
+                '@type': 'SoftwareApplication',
+                '@id': `${site.url}/#${project.slug}`,
+                name: project.title,
+                description: project.description,
+                url: project.url,
+                applicationCategory: 'BusinessApplication',
+                operatingSystem: 'Web',
+                creator: { '@id': personId },
+                keywords: project.stack.join(', '),
+              }
+            : {
+                '@type': 'CreativeWork',
+                '@id': `${site.url}/#${project.slug}`,
+                name: project.title,
+                description: project.description,
+                creator: { '@id': personId },
+                keywords: project.stack.join(', '),
+              },
+        })),
+      ],
     },
   ];
 

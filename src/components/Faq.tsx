@@ -46,10 +46,10 @@ export function Faq() {
           </p>
           <div className="hero-links">
             <a className="tlink" href={`mailto:${site.email}`}>
-              {site.email} <span aria-hidden="true">→</span>
+              {site.email}
             </a>
             <a className="tlink tlink-muted" href="/">
-              Back to the portfolio <span aria-hidden="true">↑</span>
+              Back to the portfolio
             </a>
           </div>
         </div>

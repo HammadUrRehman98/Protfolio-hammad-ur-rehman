@@ -2,7 +2,7 @@
   "name": "hammad-ur-rehman-portfolio",
   "version": "1.0.0",
   "private": true,
-  "description": "Portfolio of Hammad Ur Rehman, AI Engineer building multi-agent systems and automation pipelines.",
+  "description": "Portfolio of Hammad Ur Rehman, Applied AI Engineer building multi-agent LLM systems, RAG pipelines and legal document automation.",
   "scripts": {
     "dev": "next dev",
     "build": "next build",

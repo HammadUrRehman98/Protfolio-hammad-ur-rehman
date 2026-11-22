@@ -26,8 +26,10 @@ src/
     projects.ts        the project list, its groups, and the flagship spread
     content.ts         figures, skill groups, timeline, certifications
     faq.ts             questions and answers, used by /faq/ and llms.txt
+    testimonials.ts    empty until a real quote exists; the section hides itself
   app/
     page.tsx           the portfolio: hero, projects, expertise, experience, contact
+    work/court-document-pipeline/page.tsx  the flagship case study
     faq/page.tsx       /faq/, its own route so the portfolio stays short
     layout.tsx         fonts, metadata defaults
     opengraph-image.tsx  social card, generated at build time
@@ -36,7 +38,7 @@ src/
   components/          one component per section, plus JsonLd and Reveal
 public/
   _headers             Cloudflare cache and security headers
-  _redirects           old résumé URL to the current filename
+  _redirects           old résumé URLs to the current filename
 ```
 
 ## Things worth knowing before editing
@@ -53,6 +55,6 @@ public/
   shift. The CSP in `public/_headers` blocks external origins, so anything new
   that loads from a CDN will need that policy widened first.
 - **The résumé URL is stable.** Replace the PDF in place at
-  `public/Hammad-Ur-Rehman-AI-Engineer.pdf` rather than adding a new filename;
+  `public/Hammad-Ur-Rehman-Applied-AI-Engineer-CV.pdf` rather than adding a new filename;
   its `Cache-Control` is one hour, so a replacement goes live the same day.
 - **`npm audit fix --force` will downgrade Next.** Do not run it.

@@ -18,8 +18,8 @@ export function Path() {
             How I <em>got here</em>.
           </Reveal>
           <Reveal as="p" className="lede">
-            A year of production AI work on top of a computer science degree spent on machine
-            learning, vision and automation.
+            2 years of professional work, from a Python internship to Applied AI Engineer, on top
+            of a computer science degree spent on machine learning, vision and automation.
           </Reveal>
         </div>
 
@@ -28,7 +28,11 @@ export function Path() {
             {timeline.map((entry) => (
               <article className="history-item" key={entry.title}>
                 <p className="entry-year">{entry.date}</p>
-                <h3>{entry.title}</h3>
+                <h3>
+                  {entry.title}
+                  {entry.promoted && <span className="promoted">Promoted</span>}
+                </h3>
+                {entry.org && <p className="history-org">{entry.org}</p>}
                 <p>{entry.detail}</p>
               </article>
             ))}

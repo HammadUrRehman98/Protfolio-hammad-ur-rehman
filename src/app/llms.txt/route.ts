@@ -1,7 +1,7 @@
 import { site } from '@/config/site';
-import { projects } from '@/data/projects';
+import { caseStudy, featured, moreClientWork, projects } from '@/data/projects';
 import { faq } from '@/data/faq';
-import { skillGroups, timeline } from '@/data/content';
+import { certifications, skillGroups, timeline } from '@/data/content';
 
 // Required by `output: 'export'`: the body is baked at build time into
 // out/llms.txt rather than being served per request.
@@ -21,15 +21,23 @@ function body(): string {
 
   const live = projects
     .filter((p) => p.url)
-    .map((p) => `- [${p.title}](${p.url}) — ${p.description}`)
+    .map((p) => `- [${p.title}](${p.url}): ${p.description}`)
     .join('\n');
 
   const other = projects
     .filter((p) => !p.url)
-    .map((p) => `- **${p.title}** — ${p.description}`)
+    .map((p) => `- **${p.title}:** ${p.description}`)
     .join('\n');
 
-  const history = timeline.map((t) => `- **${t.date} — ${t.title}.** ${t.detail}`).join('\n');
+  const client = moreClientWork
+    .map((p) => `- **${p.title}:** ${p.problem} ${p.built} (${p.stack.join(', ')})`)
+    .join('\n');
+
+  const history = timeline
+    .map((t) => `- **${t.date}, ${t.title}${t.org ? `, ${t.org}` : ''}.** ${t.detail}`)
+    .join('\n');
+
+  const certs = certifications.map((c) => `- ${c.name} (${c.when})`).join('\n');
 
   const questions = faq.map((item) => `### ${item.q}\n\n${item.a}`).join('\n\n');
 
@@ -42,25 +50,35 @@ ${site.description}
 ## Facts
 
 - **Name:** ${site.name}
-- **Roles:** ${site.jobTitle}, ${site.secondaryRole}
+- **Title:** ${site.headline}
 - **Location:** ${site.location.city}, ${site.location.region}, ${site.location.country}
 - **Employer:** ${site.employer.name} (${site.employer.url})
-- **Education:** ${site.alumniOf}
+- **Education:** ${site.education.degree}, ${site.education.school}, ${site.education.years}
 - **Recognition:** ${site.award}
 - **Website:** ${site.url}
 - **Email:** ${site.email}
 - **LinkedIn:** ${site.linkedin}
 - **GitHub:** ${site.github}
 - **Résumé (PDF):** ${site.url}${site.resume}
-- **Available for:** AI engineering and Python development work, remote, worldwide
+- **Available for:** ${site.availability} Open to remote roles worldwide.
 
 ## Skills
 
 ${skills}
 
+## Flagship case study: ${caseStudy.shortTitle}
+
+${caseStudy.problem}
+
+${caseStudy.outcome} Full write-up: ${site.url}${featured.href}
+
 ## Live projects
 
 ${live}
+
+## More client work
+
+${client}
 
 ## Other projects
 
@@ -70,6 +88,10 @@ ${other}
 
 ${history}
 
+## Certifications
+
+${certs}
+
 ## Frequently asked questions
 
 Also published at ${site.url}/faq/
@@ -78,7 +100,7 @@ ${questions}
 
 ---
 
-Source: ${site.url} — canonical and authoritative. This file is generated at
+Source: ${site.url}, canonical and authoritative. This file is generated at
 build time from the same data as the website; where the two differ, the website
 is current. Content may be quoted with attribution to ${site.name}.
 `;

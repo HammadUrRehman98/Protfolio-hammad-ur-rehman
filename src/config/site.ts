@@ -13,8 +13,11 @@ export const site = {
   name: 'Hammad Ur Rehman',
   firstName: 'Hammad',
   lastName: 'Ur Rehman',
-  role: 'AI Engineer',
-  jobTitle: 'AI Engineer',
+  role: 'Applied AI Engineer',
+  jobTitle: 'Applied AI Engineer',
+
+  /** The CV headline. Used under the nameplate on the OG card and in llms.txt. */
+  headline: 'Applied AI Engineer · Agentic LLM Systems, RAG & Legal AI',
 
   /** Production origin, no trailing slash. Used for canonical URLs, OG tags and the sitemap. */
   url: 'https://hammadurrehman.site',
@@ -34,10 +37,26 @@ export const site = {
 
   /*
    * The PDF in /public. Named for what it is, with no spaces so the URL needs
-   * no escaping; the previous filename 301s to it from public/_redirects.
+   * no escaping; every previous filename 301s to it from public/_redirects.
    */
-  resume: '/Hammad-Ur-Rehman-AI-Engineer.pdf',
-  resumeFilename: 'Hammad Ur Rehman - AI Engineer.pdf',
+  resume: '/Hammad-Ur-Rehman-Applied-AI-Engineer-CV.pdf',
+  resumeFilename: 'Hammad Ur Rehman - Applied AI Engineer CV.pdf',
+
+  /*
+   * TODO: replace with your real Calendly (or other booking) URL.
+   * The "Book a call" link only renders once this is a real https:// URL, so
+   * the placeholder can never ship as a broken link.
+   */
+  bookingUrl: 'TODO_CALENDLY_URL',
+
+  /*
+   * TODO: set your working-hours overlap, e.g. 'Overlap with US Eastern and UK hours.'
+   * The line in the contact section stays hidden while this is empty.
+   */
+  timezoneOverlap: '',
+
+  /** One line under the hero subheadline and in the contact section. */
+  availability: 'Open to full-time remote Applied AI roles and freelance legal-AI projects.',
 
   /** Portrait in /public. The 560px variant is the srcset small; the 1120 is the full plate. */
   portrait: '/hammad-ur-rehman-1120.jpg',
@@ -55,70 +74,71 @@ export const site = {
     url: 'https://aivstudios.com',
   },
 
-  alumniOf: 'BS Computer Science',
+  education: {
+    degree: 'BS Computer Science',
+    school: 'Government College University Faisalabad',
+    years: '2021–2025',
+  },
 
   /** Spellings people actually type. Feeds the JSON-LD `alternateName` array. */
   alternateNames: ['Hammad Ur Rehman', 'Hammad-ur-Rehman', 'Hammad Rehman', 'Hammad UR Rehman'],
 
-  /** Second job title, so "Python developer" queries have an entity to match. */
-  secondaryRole: 'Python Developer',
-
-  /** Cited by name in the JSON-LD `award` field and the FAQ. */
-  award: 'Ranked 26th globally in the opening stage of the Agentic Legal RAG Challenge',
+  /*
+   * Cited in the JSON-LD `award` field, the FAQ and the experience timeline.
+   * TODO: add the total number of competing teams once you have it,
+   * e.g. "26th of N teams globally".
+   */
+  award:
+    'Agentic Legal RAG Challenge: 26th globally in the opening stage (80%+ accuracy) and 57th in the final stage',
 
   tagline: 'I build multi-agent systems that turn thousands of raw documents into finished work.',
 
-  /**
-   * The <title>. Name first because name queries are the ones actually winnable;
-   * the two role terms follow so the SERP line reads as a description as well.
-   */
-  seoTitle: 'Hammad Ur Rehman . AI Engineer',
+  /** The <title> for the home page. */
+  seoTitle: 'Hammad Ur Rehman | Applied AI Engineer | LLM Agents, RAG & Legal AI',
 
+  /** Meta description, about 155 characters. */
   description:
-    'Hammad Ur Rehman is an AI Engineer and Python developer in Islamabad, Pakistan, building multi-agent LLM systems, RAG pipelines and document automation with Python and FastAPI. Production AI shipped across legal tech, healthcare, sports and e-commerce for clients in the US and Canada.',
+    'Applied AI Engineer building production multi-agent LLM systems, RAG pipelines and legal document automation for US and Canadian clients. Open to remote roles.',
 
   /** Meta description for /faq/, which has its own title and canonical. */
   faqDescription:
-    'Answers to the questions people ask most about Hammad Ur Rehman: what he builds as an AI engineer, the languages and frameworks he works in, the multi-agent and RAG systems he has shipped, where he is based, and whether he is available for hire.',
+    'Answers to the questions people ask most about Hammad Ur Rehman, Applied AI Engineer: what he builds, his LLM, RAG and Python stack, the legal AI systems he has shipped, and his availability.',
 
   /**
    * One sentence, no adjectives, subject-verb-object. This is the line a
    * retrieval model is most likely to lift verbatim when asked who he is, so it
-   * carries the name, both roles and the location in a single quotable unit.
+   * carries the name, the role and the location in a single quotable unit.
    */
   entitySentence:
-    'Hammad Ur Rehman is an AI Engineer and Python developer based in Islamabad, Pakistan, who builds multi-agent LLM systems and document automation pipelines at AIVSTUDIOS.',
+    'Hammad Ur Rehman is an Applied AI Engineer based in Islamabad, Pakistan, who builds multi-agent LLM systems, RAG pipelines and legal document automation at AIVSTUDIOS.',
 
-  /** Feeds <meta name="keywords"> and the JSON-LD knowsAbout array. */
-  keywords: [
-    'Hammad Ur Rehman',
-    'AI Engineer',
-    'Python Developer',
-    'Machine Learning Engineer',
-    'LLM Engineer',
-    'Generative AI Engineer',
-    'Multi-agent systems',
-    'Agentic AI',
-    'LLM pipelines',
-    'RAG',
-    'Document automation',
-    'AI automation',
+  /**
+   * Feeds the JSON-LD `knowsAbout` array. The `keywords` meta tag was removed on
+   * purpose: search engines ignore it and it read as keyword stuffing.
+   */
+  knowsAbout: [
+    'Applied AI',
+    'Large Language Models (LLMs)',
+    'AI Agents',
+    'Multi-Agent Systems',
+    'Agentic Workflows',
+    'Retrieval-Augmented Generation (RAG)',
+    'Prompt Engineering',
+    'Vector Databases',
+    'Document AI',
+    'Legal AI',
+    'Legal Tech',
+    'Information Extraction',
+    'OCR',
+    'Document Classification',
+    'Summarization',
+    'Medical Record Summarization',
     'Python',
     'FastAPI',
-    'Next.js',
-    'Machine learning',
-    'Deep learning',
-    'Computer vision',
+    'Machine Learning',
+    'Deep Learning',
     'NLP',
-    'OCR',
-    'PDF automation',
-    'Legal tech',
-    'AI Engineer Islamabad',
-    'AI Engineer Pakistan',
-    'Python developer Pakistan',
-    'Hire AI engineer',
-    'Islamabad',
-    'Pakistan',
+    'Computer Vision',
   ],
 
   /** Optional: leave empty strings to omit the tag entirely. */
@@ -126,9 +146,12 @@ export const site = {
   googleSiteVerification: '',
 } as const;
 
+/** True once `site.bookingUrl` holds a real link rather than the TODO placeholder. */
+export const hasBookingUrl = site.bookingUrl.startsWith('https://');
+
 /*
  * Root-relative rather than bare fragments, so the same links work from /faq/
- * as well as from the portfolio page.
+ * and the case-study page as well as from the portfolio page.
  */
 export const navLinks = [
   { href: '/#projects', label: 'Projects' },
@@ -137,8 +160,9 @@ export const navLinks = [
   { href: '/#contact', label: 'Contact' },
 ] as const;
 
-/** Bottom navigation. The FAQ lives here rather than in the masthead. */
+/** Bottom navigation. The FAQ and the case study live here rather than in the masthead. */
 export const footerLinks = [
   ...navLinks,
+  { href: '/work/court-document-pipeline/', label: 'Case study' },
   { href: '/faq/', label: 'FAQ' },
 ] as const;

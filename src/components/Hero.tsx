@@ -1,4 +1,4 @@
-import { site } from '@/config/site';
+import { hasBookingUrl, site } from '@/config/site';
 import { figures } from '@/data/content';
 import { Reveal } from './Reveal';
 
@@ -37,17 +37,31 @@ export function Hero() {
             </p>
 
             <p className="hero-bio">
-              A year shipping production AI at {site.employer.name}: pipelines for legal record
-              building, clinical summarization, and platforms that run themselves.
+              2 years shipping production AI at {site.employer.name}: multi-agent LLM pipelines for
+              legal document automation, medical record summarization, and platforms that run
+              themselves.
             </p>
 
+            <p className="hero-avail">{site.availability}</p>
+
             <div className="hero-links">
-              <a className="tlink" href="#projects">
-                See the work <span aria-hidden="true">↓</span>
+              <a className="tlink tlink-primary" href="#projects">
+                View my work
               </a>
-              <a className="tlink tlink-muted" href="#contact">
-                Get in touch <span aria-hidden="true">→</span>
+              <a className="tlink" href={site.resume} download={site.resumeFilename}>
+                Download CV
               </a>
+              {/* TODO: set site.bookingUrl in src/config/site.ts; this link appears once it's real. */}
+              {hasBookingUrl && (
+                <a
+                  className="tlink tlink-muted"
+                  href={site.bookingUrl}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  Book a call
+                </a>
+              )}
             </div>
           </div>
 

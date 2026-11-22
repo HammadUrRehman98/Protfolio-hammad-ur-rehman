@@ -128,7 +128,7 @@ export default async function OpengraphImage() {
         <div style={{ display: 'flex', alignItems: 'center', gap: 16 }}>
           <div style={{ display: 'flex', width: 44, height: 8, background: ACCENT }} />
           <div style={{ display: 'flex', fontSize: 21, color: MUTED, letterSpacing: 1 }}>
-            Multi-agent systems · Document automation · Production AI
+            LLM agents · RAG · Legal AI · Document AI
           </div>
         </div>
       </div>

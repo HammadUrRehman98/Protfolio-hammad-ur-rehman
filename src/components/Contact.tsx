@@ -1,4 +1,4 @@
-import { site } from '@/config/site';
+import { hasBookingUrl, site } from '@/config/site';
 import { Reveal } from './Reveal';
 
 export function Contact() {
@@ -23,6 +23,7 @@ export function Contact() {
               Tell me what your team is doing by hand that a pipeline should be doing instead.
               I&rsquo;ll tell you honestly whether it&rsquo;s worth building.
             </p>
+            <p className="contact-avail">{site.availability}</p>
           </Reveal>
 
           <Reveal className="contact-details">
@@ -44,7 +45,7 @@ export function Contact() {
                 target="_blank"
                 rel="noopener noreferrer me"
               >
-                LinkedIn <span aria-hidden="true">↗</span>
+                LinkedIn
               </a>
               <a
                 className="tlink tlink-muted"
@@ -52,16 +53,28 @@ export function Contact() {
                 target="_blank"
                 rel="noopener noreferrer me"
               >
-                GitHub <span aria-hidden="true">↗</span>
+                GitHub
               </a>
               <a className="tlink tlink-muted" href={site.resume} download={site.resumeFilename}>
-                Résumé <span aria-hidden="true">↓</span>
+                Download CV
               </a>
+              {hasBookingUrl && (
+                <a
+                  className="tlink tlink-muted"
+                  href={site.bookingUrl}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  Book a call
+                </a>
+              )}
             </div>
 
             <p className="meta">Based in</p>
             <p className="contact-place">
-              {site.location.city}, {site.location.country}. Working with teams anywhere.
+              {site.location.city}, {site.location.country}. Open to remote roles worldwide.
+              {/* TODO: set site.timezoneOverlap, e.g. "Overlap with US Eastern and UK hours." */}
+              {site.timezoneOverlap && <> {site.timezoneOverlap}</>}
             </p>
           </Reveal>
         </div>

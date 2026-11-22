@@ -2,6 +2,35 @@ import { featured } from '@/data/projects';
 import { ProjectIndex } from './ProjectIndex';
 import { Reveal } from './Reveal';
 
+function Flagship() {
+  return (
+    <Reveal as="article" className="feature">
+      <p className="feature-label">{featured.label}</p>
+      <h4 className="feature-title">
+        <a href={featured.href}>{featured.title}</a>
+      </h4>
+
+      <div className="feature-body">
+        {featured.blocks.map((block) => (
+          <p key={block.term}>
+            <span className="runin">{block.term}</span>
+            {block.detail}
+          </p>
+        ))}
+      </div>
+
+      <div className="feature-foot">
+        <p className="credit">
+          {featured.credit} · {featured.stack.join(', ')}
+        </p>
+        <a className="tlink" href={featured.href}>
+          Read the case study
+        </a>
+      </div>
+    </Reveal>
+  );
+}
+
 export function Work() {
   return (
     <section id="projects" className="showcase" aria-labelledby="work-heading">
@@ -18,30 +47,12 @@ export function Work() {
             Systems, <em>not demos</em>.
           </Reveal>
           <Reveal as="p" className="lede">
-            Every project below runs against real data for real users, across legal, healthcare,
-            sports and commerce.
+            Production AI systems shipped to real users: legal AI and Document AI first, then
+            healthcare, sports and commerce.
           </Reveal>
         </div>
 
-        <Reveal as="article" className="feature">
-          <p className="feature-label">{featured.label}</p>
-          <h3 className="feature-title">{featured.title}</h3>
-
-          <div className="feature-body">
-            {featured.blocks.map((block) => (
-              <p key={block.term}>
-                <span className="runin">{block.term}</span>
-                {block.detail}
-              </p>
-            ))}
-          </div>
-
-          <p className="credit">
-            {featured.credit} · {featured.stack.join(', ')}
-          </p>
-        </Reveal>
-
-        <ProjectIndex />
+        <ProjectIndex lead={<Flagship />} />
       </div>
     </section>
   );

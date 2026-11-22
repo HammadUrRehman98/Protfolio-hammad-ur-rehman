@@ -41,11 +41,10 @@ export const metadata: Metadata = {
     template: `%s · ${site.name}`,
   },
   description: site.description,
-  keywords: [...site.keywords],
   authors: [{ name: site.name, url: site.url }],
   creator: site.name,
   publisher: site.name,
-  applicationName: title,
+  applicationName: site.name,
   category: 'technology',
   alternates: {
     canonical: '/',
@@ -59,7 +58,7 @@ export const metadata: Metadata = {
     title,
     description: site.description,
     url: site.url,
-    siteName: title,
+    siteName: site.name,
     locale: 'en_US',
   },
   twitter: {
